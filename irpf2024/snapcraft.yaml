@@ -1,0 +1,47 @@
+name: irpf2024
+base: core22
+version: '1.1'
+summary: Programa de Imposto de Renda
+description: |
+  Programa Gerador de Declaração (PGD) da Declaração do Imposto sobre a Renda
+  das Pessoas Físicas (DIRPF).
+grade: stable
+confinement: strict
+
+environment:
+  _JAVA_OPTIONS: -Duser.home="$SNAP_USER_DATA"
+  JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64
+  PATH: $JAVA_HOME/jre/bin:$PATH
+
+apps:
+  irpf2024:
+    command: /usr/bin/run.sh 1
+    plugs:
+    - network
+    - x11
+
+  hidpi:
+    command: /usr/bin/run.sh 2
+    plugs:
+    - network
+    - x11
+
+parts:
+  irpf2024:
+    plugin: dump
+    source: 'https://downloadirpf.receita.fazenda.gov.br/irpf/2024/irpf/arquivos/IRPF2024-${SNAPCRAFT_PROJECT_VERSION}.zip'
+    source-type: zip
+    stage-packages:
+      - openjdk-11-jre
+
+  script:
+    plugin: dump
+    source-type: local
+    source: include
+    organize:
+      run.sh: usr/bin/run.sh
+
+lint:
+  ignore:
+    - library:
+      - usr/lib/jvm/java-*/lib/*.so
