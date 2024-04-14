@@ -41,6 +41,12 @@ parts:
     organize:
       run.sh: usr/bin/run.sh
 
+layout:
+  #$SNAP/ProgramasRFB/IRPF2024:
+    #bind: $SNAP_USER_COMMON/ProgramasRFB
+  $SNAP/IRPF2024/lib/resources/mensagens.xml:
+    bind-file: $SNAP_DATA/lib/resources/mensagens.xml
+
 lint:
   ignore:
     - library:
