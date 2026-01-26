@@ -1,0 +1,39 @@
+name: gemini-cli
+base: core24
+version: "0.25.2"
+summary: Unofficial snap for Google Gemini CLI
+description: |
+  An open-source AI agent that brings the power of Gemini directly into
+  your terminal.
+
+grade: stable
+confinement: strict
+
+apps:
+  gemini:
+    command: lib/node_modules/gemini-wrapper/node_modules/.bin/gemini
+    plugs: [network, network-bind, home]
+
+parts:
+  gemini:
+    plugin: npm
+    source: .
+    npm-include-node: true
+    npm-node-version: 20.14.0
+
+    # We need python/make/g++ because some npm dependencies build native modules
+    build-packages:
+      - python3
+      - build-essential
+
+    override-pull: |
+      craftctl default
+      cat > package.json <<EOF
+      {
+        "name": "gemini-wrapper",
+        "version": "$SNAPCRAFT_PROJECT_VERSION",
+        "dependencies": {
+          "@google/gemini-cli": "latest"
+        }
+      }
+      EOF
