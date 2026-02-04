@@ -1,6 +1,6 @@
 name: gemini-cli
 base: core24
-version: "0.25.2"
+version: "0.26.0"
 summary: Unofficial snap for Google Gemini CLI
 description: |
   An open-source AI agent that brings the power of Gemini directly into
