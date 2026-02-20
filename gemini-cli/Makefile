@@ -5,26 +5,25 @@ TARGET := gemini-cli_${VERSION}_amd64.snap
 
 export VERSION := ${VERSION}
 
-default:
-	@echo "Current version: ${VERSION}"
-
-snapcraft.yaml: snapcraft.yaml.mk
-	@echo "Refreshing $@..."
-	@envsubst < $< > $@
-
-build: ${TARGET}
-
 ${TARGET}: snapcraft.yaml
+	@echo "\n* Build $@ with version ${VERSION}..."
 	snapcraft pack
 
-release: ${TARGET}
-	snapcraft upload --release=stable $<
+update: ${UPSTREAM_DIR}
+	@echo "\n* Update upstrean project..."
+	@git -C ${UPSTREAM_DIR} pull
 
 ${UPSTREAM_DIR}:
+	@echo "\n* Clone upstrean project..."
 	git clone ${UPSTREAM_GIT} $@
 
-update: ${UPSTREAM_DIR}
-	git -C ${UPSTREAM_DIR} pull
+snapcraft.yaml: snapcraft.yaml.mk
+	@echo "* Refreshing $@..."
+	@envsubst < $< > $@
+
+release: ${TARGET}
+	@echo "* Uploading $<..."
+	snapcraft upload --release=stable $<
 
 clean:
 	$(RM) gemini-cli_*.snap snapcraft.yaml
