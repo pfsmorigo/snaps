@@ -1,6 +1,6 @@
 name: gemini-cli
 base: core24
-version: "0.27.3"
+version: "${VERSION}"
 summary: Unofficial snap for Google Gemini CLI
 description: |
   An open-source AI agent that brings the power of Gemini directly into
@@ -37,3 +37,5 @@ parts:
         }
       }
       EOF
+
+# vim: syntax=yaml
