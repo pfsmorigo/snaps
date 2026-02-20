@@ -21,7 +21,7 @@ release-stable: ${TARGET}
 	snapcraft upload --release=stable $<
 
 update: ${UPSTREAM_DIR}
-	git -C ${UPSTREAM_DIR} fetch
+	git -C ${UPSTREAM_DIR} pull
 	sed -i 's/^version: .*/version: "${VERSION}"/' snapcraft.yaml
 
 clean:
