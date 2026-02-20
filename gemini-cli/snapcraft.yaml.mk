@@ -5,6 +5,12 @@ summary: Unofficial snap for Google Gemini CLI
 description: |
   An open-source AI agent that brings the power of Gemini directly into
   your terminal.
+title: Gemini CLI
+license: Apache License 2.0
+donation: N/A (Google-maintained project; no official donation link)
+issues: https://github.com/google-gemini/gemini-cli/issues
+source-code: https://github.com/google-gemini/gemini-cli
+website: https://ai.google.dev/gemini-api/docs/quickstart
 
 grade: stable
 confinement: strict

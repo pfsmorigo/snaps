@@ -9,6 +9,7 @@ default:
 	@echo "Current version: ${VERSION}"
 
 snapcraft.yaml: snapcraft.yaml.mk
+	@echo "Refreshing $<..."
 	@envsubst < $< > $@
 
 build: ${TARGET}
