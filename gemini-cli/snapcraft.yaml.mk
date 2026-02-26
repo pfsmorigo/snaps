@@ -1,16 +1,18 @@
 name: gemini-cli
 base: core24
 version: "${VERSION}"
+title: Gemini CLI
 summary: Unofficial snap for Google Gemini CLI
 description: |
   An open-source AI agent that brings the power of Gemini directly into
   your terminal.
-title: Gemini CLI
-license: Apache License 2.0
-donation: N/A (Google-maintained project; no official donation link)
-issues: https://github.com/google-gemini/gemini-cli/issues
-source-code: https://github.com/google-gemini/gemini-cli
+license: Apache-2.0
+
 website: https://ai.google.dev/gemini-api/docs/quickstart
+source-code: https://github.com/google-gemini/gemini-cli
+issues: https://github.com/google-gemini/gemini-cli/issues
+contact: https://github.com/google-gemini/gemini-cli/discussions
+donation: https://github.com/google-gemini/gemini-cli
 
 grade: stable
 confinement: strict
@@ -18,7 +20,12 @@ confinement: strict
 apps:
   gemini:
     command: lib/node_modules/gemini-wrapper/node_modules/.bin/gemini
-    plugs: [network, network-bind, home]
+    plugs:
+      - network
+      - network-bind
+      - home
+      - desktop
+      - desktop-legacy
 
 parts:
   gemini:
@@ -31,13 +38,21 @@ parts:
     build-packages:
       - python3
       - build-essential
+      - libsecret-1-dev
+      - pkg-config
+    stage-packages:
+      - libx11-6
+      - libsecret-1-0
+
+    prime:
+      - -lib/node_modules/gemini-wrapper/node_modules/tree-sitter-bash/prebuilds/linux-arm64/*
 
     override-pull: |
       craftctl default
       cat > package.json <<EOF
       {
         "name": "gemini-wrapper",
-        "version": "$SNAPCRAFT_PROJECT_VERSION",
+        "version": "${VERSION}",
         "dependencies": {
           "@google/gemini-cli": "latest"
         }

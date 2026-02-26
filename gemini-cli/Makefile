@@ -11,7 +11,7 @@ ${TARGET}: snapcraft.yaml
 
 update: ${UPSTREAM_DIR}
 	@echo "\n* Update upstrean project..."
-	@git -C ${UPSTREAM_DIR} pull
+	@git -C ${UPSTREAM_DIR} pull --tags
 
 ${UPSTREAM_DIR}:
 	@echo "\n* Clone upstrean project..."
@@ -19,11 +19,14 @@ ${UPSTREAM_DIR}:
 
 snapcraft.yaml: snapcraft.yaml.mk
 	@echo "* Refreshing $@..."
-	@envsubst < $< > $@
+	@envsubst '$$VERSION' < $< > $@
 
 release: ${TARGET}
 	@echo "* Uploading $<..."
 	snapcraft upload --release=stable $<
+
+local-install: ${TARGET}
+	sudo snap install --dangerous $<
 
 clean:
 	$(RM) gemini-cli_*.snap snapcraft.yaml
