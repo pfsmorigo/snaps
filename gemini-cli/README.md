@@ -2,7 +2,7 @@
 
 This repository provides a **Snap package** for the [Google Gemini CLI](https://github.com/google-gemini/gemini-cli).
 
-### ⚠️ Disclaimer
+### Disclaimer
 
 **This is not an official Google product.** This snap is a community-maintained wrapper. It does not modify the original source code in any way; it simply clones the official repository and packages it for easy installation on Snap-supported Linux distributions.
 
@@ -40,6 +40,35 @@ Once you have your key, export it to your environment:
 ```bash
 export GOOGLE_API_KEY='your_api_key_here'
 ```
+
+
+## Filesystem Access
+
+By default, snaps are strictly confined for security. If you need the Gemini CLI to access files, you have two main options:
+
+### 1. Accessing External Directories (Recommended)
+
+You can make any directory accessible to the snap without granting full home directory permissions by using a **bind mount** into the snap's private `common` folder. This is the most secure method.
+
+```bash
+# Create a directory inside the snap's writable area
+mkdir -p ~/snap/gemini-cli/common/data
+
+# Mount your external directory there
+sudo mount --bind /path/to/your/files ~/snap/gemini-cli/common/data
+```
+The files will then be available to the CLI at the path `~/snap/gemini-cli/common/data`.
+
+### 2. Home Directory Access (Broad Permissions)
+
+If you prefer to allow the snap to access your entire home directory (excluding hidden files), run:
+
+```bash
+sudo snap connect gemini-cli:home
+```
+
+> **Hint:** If you grant full home directory access, you can still protect your sensitive files by using the `gemini --sandbox` feature. This restricts the CLI's operations to the current project directory, preventing it from accidentally modifying or reading files outside your workspace.
+
 
 ##  Contributing
 
