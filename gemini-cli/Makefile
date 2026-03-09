@@ -5,28 +5,34 @@ TARGET := gemini-cli_${VERSION}_amd64.snap
 
 export VERSION := ${VERSION}
 
-${TARGET}: snapcraft.yaml
-	@echo "\n* Build $@ with version ${VERSION}..."
+define print_message
+	@echo "\033[34m$(1)\033[0m"
+endef
+
+${TARGET}: refresh-upstream snapcraft.yaml
+	$(call print_message,Build $@ with version ${VERSION}...)
 	snapcraft pack
 
-update: ${UPSTREAM_DIR}
-	@echo "\n* Update upstrean project..."
-	@git -C ${UPSTREAM_DIR} pull --tags
-
-${UPSTREAM_DIR}:
-	@echo "\n* Clone upstrean project..."
-	git clone ${UPSTREAM_GIT} $@
-
 snapcraft.yaml: snapcraft.yaml.mk
-	@echo "* Refreshing $@..."
+	$(call print_message,Refreshing $@ with ${VERSION}...)
 	@envsubst '$$VERSION' < $< > $@
 
 release: ${TARGET}
-	@echo "* Uploading $<..."
+	$(call print_message,Uploading $<...)
 	snapcraft upload --release=stable $<
+
+refresh-upstream: ${UPSTREAM_DIR}
+	$(call print_message,Refresh upstrean project...)
+	@git -C ${UPSTREAM_DIR} pull --tags
+
+${UPSTREAM_DIR}:
+	$(call print_message,Clone upstrean project...)
+	git clone ${UPSTREAM_GIT} $@
 
 local-install: ${TARGET}
 	sudo snap install --dangerous $<
 
 clean:
 	$(RM) gemini-cli_*.snap snapcraft.yaml
+
+.PHONY: snapcraft.yaml
