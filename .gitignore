@@ -1,3 +1,4 @@
 *.snap
 squashfs-root
 gemini-cli/snapcraft.yaml
+copilot-cli/snapcraft.yaml
