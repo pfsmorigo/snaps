@@ -2,7 +2,7 @@ name: gemini-cli
 base: core24
 version: "${VERSION}"
 title: Gemini CLI
-summary: Unofficial snap for Google Gemini CLI
+summary: Google Gemini CLI
 description: |
   An open-source AI agent that brings the power of Gemini directly into
   your terminal.
