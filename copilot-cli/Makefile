@@ -1,27 +1,20 @@
-UPSTREAM_GIT := "https://github.com/github/copilot-cli"
-UPSTREAM_DIR := ../../copilot-cli
+PROJECT_NAME := copilot-cli
+UPSTREAM_GIT := https://github.com/github/copilot-cli
+
+UPSTREAM_DIR := ../../${PROJECT_NAME}
 VERSION := $(shell git -C ${UPSTREAM_DIR} tag --sort=-version:refname | grep -v nightly | grep -v preview | head -n 1 | tr -d v)
-TARGET := copilot-cli_${VERSION}_amd64.snap
+TARGET_DIR := v${VERSION}
+TARGET := ${TARGET_DIR}/${PROJECT_NAME}_${VERSION}_amd64.snap
 
 export VERSION := ${VERSION}
 
 define print_message
-	@echo "\033[34m$(1)\033[0m"
+	@echo "\n\033[34m$(1)\033[0m"
 endef
 
-${TARGET}: refresh-upstream snapcraft.yaml
-	$(call print_message,Build $@ with version ${VERSION}...)
-	snapcraft pack
+default: pull-upstream release
 
-snapcraft.yaml: snapcraft.yaml.mk
-	$(call print_message,Refreshing $@ with ${VERSION}...)
-	@envsubst '$$VERSION' < $< > $@
-
-release: ${TARGET}
-	$(call print_message,Uploading $<...)
-	snapcraft upload --release=stable $<
-
-refresh-upstream: ${UPSTREAM_DIR}
+pull-upstream: ${UPSTREAM_DIR}
 	$(call print_message,Refresh upstrean project...)
 	@git -C ${UPSTREAM_DIR} pull --tags
 
@@ -29,10 +22,25 @@ ${UPSTREAM_DIR}:
 	$(call print_message,Clone upstrean project...)
 	git clone ${UPSTREAM_GIT} $@
 
-local-install: ${TARGET}
+release: ${TARGET_DIR}/released
+
+${TARGET_DIR}/released: ${TARGET}
+	$(call print_message,Uploading $<...)
+	snapcraft upload --release=stable $<
+	touch $@
+
+${TARGET_DIR}/snapcraft.yaml: snapcraft.yaml.mk
+	$(call print_message,Creating $@...)
+	mkdir -p ${TARGET_DIR}
+	@envsubst '$$VERSION' < $< > $@
+
+${TARGET}: ${TARGET_DIR}/snapcraft.yaml
+	$(call print_message,Build $@...)
+	cd ${TARGET_DIR} && snapcraft pack
+
+install: ${TARGET}
 	sudo snap install --dangerous $<
 
 clean:
-	$(RM) copilot-cli_*.snap snapcraft.yaml
-
-.PHONY: snapcraft.yaml
+	snapcraft clean
+	$(RM) -rf v[0-9]*

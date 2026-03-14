@@ -1,4 +1,5 @@
 *.snap
-squashfs-root
-gemini-cli/snapcraft.yaml
 copilot-cli/snapcraft.yaml
+gemini-cli/snapcraft.yaml
+squashfs-root
+v[0-9]*
