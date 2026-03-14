@@ -1,0 +1,64 @@
+name: claude-code
+base: core24
+version: "${VERSION}"
+title: Claude Code
+summary: Anthropic Claude Code
+description: |
+  Claude Code is an agentic coding tool that lives in your terminal,
+  understands your codebase, and helps you code faster by executing routine
+  tasks, explaining complex code, and handling git workflows - all through
+  natural language commands.
+license: Apache-2.0
+
+website: https://code.claude.com/docs/en/overview
+source-code: https://github.com/anthropics/claude-code
+issues: https://github.com/anthropics/claude-code/issues
+contact: https://github.com/anthropics/claude-code/discussions
+donation: https://github.com/anthropics/claude-code
+
+grade: stable
+confinement: strict
+
+apps:
+  claude-code:
+    command: lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code
+    plugs:
+      - network
+      - network-bind
+      - home
+      - desktop
+      - desktop-legacy
+
+parts:
+  claude-code:
+    plugin: npm
+    source: .
+    npm-include-node: true
+    npm-node-version: 20.14.0
+
+    # We need python/make/g++ because some npm dependencies build native modules
+    build-packages:
+      - build-essential
+      - pkg-config
+      - python3
+    stage-packages:
+      - libasound2
+      - git
+
+    prime:
+      - -lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code/vendor/audio-capture/x64-linux/*
+      - -lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code/vendor/tree-sitter-bash/x64-linux/*
+
+    override-pull: |
+      craftctl default
+      cat > package.json <<EOF
+      {
+        "name": "claude-code-wrapper",
+        "version": "${VERSION}",
+        "dependencies": {
+          "@anthropic-ai/claude-code": "latest"
+        }
+      }
+      EOF
+
+# vim: syntax=yaml
