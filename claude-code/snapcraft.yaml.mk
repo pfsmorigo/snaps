@@ -21,7 +21,7 @@ confinement: strict
 
 apps:
   claude-code:
-    command: lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code
+    command: bin/claude-code
     plugs:
       - network
       - network-bind
@@ -46,8 +46,15 @@ parts:
       - git
 
     prime:
-      - -lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code/vendor/audio-capture/x64-linux/*
-      - -lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code/vendor/tree-sitter-bash/x64-linux/*
+      - -lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code/vendor/audio-capture/arm64-linux/*
+      - -lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code/vendor/tree-sitter-bash/arm64-linux/*
+      - -lib/node_modules/claude-code-wrapper/node_modules/@img/sharp-linux-x64/*
+      - -lib/node_modules/claude-code-wrapper/node_modules/@img/sharp-libvips-linux-x64/*
+
+    override-prime: |
+      craftctl default
+      ln -sf ../lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code bin/claude-code
+      ln -sf ../lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code bin/abcde
 
     override-pull: |
       craftctl default
