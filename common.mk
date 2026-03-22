@@ -9,7 +9,7 @@ define print_message
 	@echo "\n\033[34m$(1)\033[0m"
 endef
 
-default: pull-upstream release
+default: pull-upstream build release
 
 pull-upstream: ${UPSTREAM_DIR}
 	$(call print_message,Refresh upstream project...)
@@ -31,6 +31,8 @@ ${TARGET_DIR}/snapcraft.yaml: snapcraft.yaml.mk
 	$(call print_message,Creating $@...)
 	mkdir -p ${TARGET_DIR}
 	@envsubst '$$VERSION' < $< > $@
+
+build: ${TARGET}
 
 ${TARGET}: ${TARGET_DIR}/snapcraft.yaml
 	$(call print_message,Build $@...)
