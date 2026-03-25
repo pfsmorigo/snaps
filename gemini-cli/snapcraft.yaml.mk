@@ -44,6 +44,7 @@ parts:
       - libx11-6
       - libsecret-1-0
       - git
+      - quilt
 
     prime:
       - -lib/node_modules/gemini-wrapper/node_modules/tree-sitter-bash/prebuilds/linux-arm64/*

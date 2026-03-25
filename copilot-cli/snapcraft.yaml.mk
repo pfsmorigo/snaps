@@ -43,6 +43,7 @@ parts:
     stage-packages:
       - libsecret-1-0
       - git
+      - quilt
 
     prime:
     - -lib/node_modules/copilot-wrapper/node_modules/@github/copilot/prebuilds/linux-arm64/*
