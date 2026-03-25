@@ -19,12 +19,6 @@ donation: https://github.com/anthropics/claude-code
 grade: stable
 confinement: strict
 
-plugs:
-  dot-claude:
-    interface: personal-files
-    write:
-      - $HOME/.claude
-
 apps:
   claude-code:
     command: lib/node_modules/claude-code-wrapper/node_modules/.bin/claude
@@ -34,7 +28,6 @@ apps:
       - home
       - desktop
       - desktop-legacy
-      - dot-claude
 
 parts:
   claude-code:
