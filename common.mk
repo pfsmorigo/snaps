@@ -1,5 +1,4 @@
-UPSTREAM_DIR := ../../${PROJECT_NAME}
-VERSION := $(shell git -C ${UPSTREAM_DIR} tag --sort=-version:refname | grep -v nightly | grep -v preview | head -n 1 | tr -d v 2>/dev/null)
+VERSION := $(shell curl -s https://api.github.com/repos/${GITHUB_PROJECT}/tags | jq -r '.[].name' | grep -e "-dev" -v -e "-rc" -e "-alpha" -e "-beta" -e "-pre" | head -n 1 | sed 's/^v//')
 TARGET_DIR := v${VERSION}
 TARGET := ${TARGET_DIR}/${PROJECT_NAME}_${VERSION}_amd64.snap
 
@@ -9,16 +8,8 @@ define print_message
 	@echo "\n\033[34m$(1)\033[0m"
 endef
 
-default: pull-upstream build release
-
-pull-upstream: ${UPSTREAM_DIR}
-	$(call print_message,Refresh upstream project...)
-	@git -C ${UPSTREAM_DIR} pull --tags
-	@echo "Last tag: ${VERSION}"
-
-${UPSTREAM_DIR}:
-	$(call print_message,Clone upstream project...)
-	git clone ${UPSTREAM_GIT} $@
+default: build release
+	@echo "Lastest release is ${VERSION}"
 
 release: ${TARGET_DIR}/released
 
