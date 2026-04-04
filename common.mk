@@ -1,4 +1,4 @@
-VERSION := $(shell curl -s https://api.github.com/repos/${GITHUB_PROJECT}/tags | jq -r '.[].name' | grep -e "-dev" -v -e "-rc" -e "-alpha" -e "-beta" -e "-pre" | head -n 1 | sed 's/^v//')
+VERSION := $(shell curl -s https://api.github.com/repos/${PROJECT_OWNER}/${PROJECT_NAME}/tags | jq -r '.[].name' | grep -e "-dev" -v -e "-rc" -e "-alpha" -e "-beta" -e "-pre" | head -n 1 | sed 's/^v//')
 TARGET_DIR := v${VERSION}
 TARGET := ${TARGET_DIR}/${PROJECT_NAME}_${VERSION}_amd64.snap
 

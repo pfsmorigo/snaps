@@ -1,4 +1,5 @@
+PROJECT_OWNER := anthropics
 PROJECT_NAME := claude-code
-GITHUB_PROJECT := anthropics/claude-code
+PROJECT_TITLE := Anthropics Claude Code
 
 include ../common.mk

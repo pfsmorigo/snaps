@@ -1,4 +1,5 @@
+PROJECT_OWNER := google-gemini
 PROJECT_NAME := gemini-cli
-GITHUB_PROJECT := google-gemini/gemini-cli
+PROJECT_TITLE := Google Gemini CLI
 
 include ../common.mk

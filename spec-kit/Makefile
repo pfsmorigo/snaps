@@ -1,4 +1,5 @@
+PROJECT_OWNER := github
 PROJECT_NAME := spec-kit
-GITHUB_PROJECT := github/spec-kit
+PROJECT_TITLE := GitHub Spec Kit
 
 include ../common.mk
