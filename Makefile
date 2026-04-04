@@ -1,4 +1,4 @@
-SUBDIRS := claude-code gemini-cli copilot-cli
+SUBDIRS := claude-code gemini-cli copilot-cli spec-kit
 
 .PHONY: all $(SUBDIRS) pull-upstream build release install clean
 
