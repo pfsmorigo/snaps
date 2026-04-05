@@ -15,6 +15,10 @@ default: build release
 
 release: ${TARGET_DIR}/released
 
+README.md: ../README.md.mk
+	$(call print_message,Refreshing $@...)
+	@set -a; . ./.env; set +a; envsubst < $< > $@
+
 ${TARGET_DIR}/released: ${TARGET}
 	$(call print_message,Uploading $<...)
 	snapcraft upload --release=stable $<

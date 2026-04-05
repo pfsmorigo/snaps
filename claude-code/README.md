@@ -1,25 +1,10 @@
-# Claude Code (Unofficial Snap)
+# Anthropics Claude Code (Unofficial Snap)
 
-This repository provides a **Snap package** for the [Claude Code](https://github.com/anthropics/claude-code).
+This repository provides a **Snap package** for the [Anthropics Claude Code](https://github.com/anthropics/claude-code).
 
 ### Disclaimer
 
-**This is not an official Anthropic product.** This snap is a community-maintained wrapper. It does not modify the original source code in any way; it simply clones the official repository and packages it for easy installation on Snap-supported Linux distributions.
-
-
-## Installation
-
-You can install the snap directly from this repository (if you are building locally) or from the Snap Store:
-
-```bash
-sudo snap install claude-code
-```
-
-Note: Depending on your snap's configuration, you may need to manually connect the network interface:
-
-```bash
-sudo snap connect claude-code:network
-```
+**This is not an official Anthropics product.** This snap is a community-maintained wrapper. It does not modify the original source code in any way; it simply clones the official repository and packages it for easy installation on Snap-supported Linux distributions.
 
 
 ## How it Works
@@ -28,7 +13,7 @@ To ensure security and integrity, this snap follows a "vanilla" build process:
 
  - It pulls the latest stable source directly from https://github.com/anthropics/claude-code
  - It packages the Python environment and dependencies into a confined snap.
- - No custom patches or external scripts are added to the Claude Code source code.
+ - No custom patches or external scripts are added to the claude-code source code.
 
 
 ## Filesystem Access
