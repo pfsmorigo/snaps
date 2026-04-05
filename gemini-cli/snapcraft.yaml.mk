@@ -48,6 +48,11 @@ parts:
 
     prime:
       - -lib/node_modules/gemini-wrapper/node_modules/tree-sitter-bash/prebuilds/linux-arm64/*
+      - -usr/lib/x86_64-linux-gnu/libicuio.so*
+      - -usr/lib/x86_64-linux-gnu/libicutest.so*
+      - -usr/lib/x86_64-linux-gnu/preloadable_libintl.so
+      - -usr/lib/x86_64-linux-gnu/libicui18n.so*
+      - -usr/lib/x86_64-linux-gnu/libicutu.so*
 
     override-pull: |
       craftctl default

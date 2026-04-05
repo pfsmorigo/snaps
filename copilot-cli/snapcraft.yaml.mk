@@ -44,10 +44,18 @@ parts:
       - libsecret-1-0
       - git
       - quilt
+      - libpipewire-0.3-0
+      - libx11-6
+      - libxtst6
 
     prime:
     - -lib/node_modules/copilot-wrapper/node_modules/@github/copilot/prebuilds/linux-arm64/*
     - -lib/node_modules/copilot-wrapper/node_modules/@github/copilot/clipboard/node_modules/@teddyzhu/clipboard-linux-arm64-gnu/*
+    - -usr/lib/x86_64-linux-gnu/libicui18n.so*
+    - -usr/lib/x86_64-linux-gnu/libicuio.so*
+    - -usr/lib/x86_64-linux-gnu/libicutest.so*
+    - -usr/lib/x86_64-linux-gnu/libicutu.so*
+    - -usr/lib/x86_64-linux-gnu/preloadable_libintl.so
 
     override-pull: |
       craftctl default

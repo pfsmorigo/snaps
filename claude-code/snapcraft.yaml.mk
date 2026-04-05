@@ -51,6 +51,11 @@ parts:
       - -lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code/vendor/tree-sitter-bash/arm64-linux/*
       - -lib/node_modules/claude-code-wrapper/node_modules/@img/sharp-linux-x64/*
       - -lib/node_modules/claude-code-wrapper/node_modules/@img/sharp-libvips-linux-x64/*
+      - -usr/lib/x86_64-linux-gnu/libicui18n.so*
+      - -usr/lib/x86_64-linux-gnu/libicuio.so*
+      - -usr/lib/x86_64-linux-gnu/libicutest.so*
+      - -usr/lib/x86_64-linux-gnu/libicutu.so*
+      - -usr/lib/x86_64-linux-gnu/preloadable_libintl.so
 
     override-pull: |
       craftctl default
