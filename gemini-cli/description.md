@@ -1,5 +1,6 @@
 This repository provides a **Snap package** for the Google Gemini CLI.
 
+
 **Disclaimer**: This is not an official Google product. This snap is a community-maintained wrapper. It does not modify the original source code in any way; it simply clones the official repository and packages it for easy installation on Snap-supported Linux distributions.
 
 
@@ -8,6 +9,7 @@ This repository provides a **Snap package** for the Google Gemini CLI.
 For documentation about the Gemini CLI functionality itself or to report bug, please use the official upstream repository: https://github.com/google-gemini/gemini-cli
 
 By default, snaps are strictly confined for security. If you need the Gemini CLI to access files, check the instructions at https://github.com/pfsmorigo/snaps/tree/main/gemini-cli#filesystem-access
+
 
 **How this snap is built**
 
