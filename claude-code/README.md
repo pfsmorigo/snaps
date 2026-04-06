@@ -12,7 +12,7 @@ This repository provides a **Snap package** for the [Anthropics Claude Code](htt
 To ensure security and integrity, this snap follows a "vanilla" build process:
 
  - It pulls the latest stable source directly from https://github.com/anthropics/claude-code
- - It packages the Python environment and dependencies into a confined snap.
+ - It packages the Node environment and dependencies into a confined snap.
  - No custom patches or external scripts are added to the claude-code source code.
 
 
