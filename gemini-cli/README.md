@@ -12,7 +12,7 @@ This repository provides a **Snap package** for the [Google Gemini CLI](https://
 To ensure security and integrity, this snap follows a "vanilla" build process:
 
  - It pulls the latest stable source directly from https://github.com/google-gemini/gemini-cli
- - It packages the Python environment and dependencies into a confined snap.
+ - It packages the Node environment and dependencies into a confined snap.
  - No custom patches or external scripts are added to the gemini-cli source code.
 
 
