@@ -47,6 +47,7 @@ parts:
       - libpipewire-0.3-0
       - libx11-6
       - libxtst6
+      - poppler-utils
 
     prime:
     - -lib/node_modules/copilot-wrapper/node_modules/@github/copilot/prebuilds/linux-arm64/*

@@ -45,6 +45,7 @@ parts:
       - libasound2
       - git
       - quilt
+      - poppler-utils
 
     prime:
       - -lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code/vendor/audio-capture/arm64-linux/*
