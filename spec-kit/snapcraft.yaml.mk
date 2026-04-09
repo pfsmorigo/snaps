@@ -36,3 +36,5 @@ parts:
     stage-packages:
       - python3-venv
       - python3-pip
+
+# vim: syntax=yaml
