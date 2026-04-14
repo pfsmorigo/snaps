@@ -46,6 +46,7 @@ parts:
       - git
       - quilt
       - poppler-utils
+      - curl
 
     prime:
       - -lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code/vendor/audio-capture/arm64-linux/*

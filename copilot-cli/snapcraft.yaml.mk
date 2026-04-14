@@ -49,6 +49,7 @@ parts:
       - libxtst6
       - poppler-utils
       - libei1
+      - curl
 
     prime:
     - -lib/node_modules/copilot-wrapper/node_modules/@github/copilot/prebuilds/linux-arm64/*
