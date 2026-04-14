@@ -10,7 +10,7 @@ define print_message
 	@echo "\n\033[34m$(1)\033[0m"
 endef
 
-default: build release
+default: build
 	@echo "Lastest release is ${VERSION}"
 
 release: ${TARGET_DIR}/released
