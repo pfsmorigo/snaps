@@ -54,6 +54,12 @@ parts:
       - -usr/lib/x86_64-linux-gnu/preloadable_libintl.so
       - -usr/lib/x86_64-linux-gnu/libicui18n.so*
       - -usr/lib/x86_64-linux-gnu/libicutu.so*
+      - -usr/lib/x86_64-linux-gnu/libfreebl3.so
+      - -usr/lib/x86_64-linux-gnu/libfreeblpriv3.so
+      - -usr/lib/x86_64-linux-gnu/libnssckbi.so
+      - -usr/lib/x86_64-linux-gnu/libnssdbm3.so
+      - -usr/lib/x86_64-linux-gnu/libsoftokn3.so
+      - -usr/lib/x86_64-linux-gnu/libssl3.so
 
     override-pull: |
       craftctl default
