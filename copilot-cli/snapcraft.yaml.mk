@@ -42,14 +42,10 @@ parts:
       - pkg-config
     stage-packages:
       - libsecret-1-0
-      - git
-      - quilt
       - libpipewire-0.3-0
       - libx11-6
       - libxtst6
-      - poppler-utils
       - libei1
-      - curl
 
     prime:
     - -lib/node_modules/copilot-wrapper/node_modules/@github/copilot/prebuilds/linux-arm64/*

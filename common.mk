@@ -5,6 +5,7 @@ TARGET_DIR := v${VERSION}
 TARGET := ${TARGET_DIR}/${PROJECT}_${VERSION}_amd64.snap
 
 export VERSION := ${VERSION}
+export COMMON_LIBRARIES := git quilt poppler-utils curl
 
 define print_message
 	@echo "\n\033[34m$(1)\033[0m"
@@ -28,6 +29,13 @@ ${TARGET_DIR}/snapcraft.yaml: snapcraft.yaml.mk
 	$(call print_message,Creating $@...)
 	mkdir -p ${TARGET_DIR}
 	@envsubst '$$VERSION' < $< > $@
+	@if grep -q "stage-packages:" $@; then \
+		for lib in $(COMMON_LIBRARIES); do \
+			if ! grep -q -- "- $$lib" $@; then \
+				sed -i "/stage-packages:/a \      - $$lib" $@; \
+			fi; \
+		done; \
+	fi
 
 build: ${TARGET}
 
