@@ -1,5 +1,10 @@
 # Anthropics Claude Code (Unofficial Snap)
 
+[![claude-code](https://snapcraft.io/claude-code/badge.svg)](https://snapcraft.io/claude-code)
+[![claude-code](https://snapcraft.io/claude-code/trending.svg?name=0)](https://snapcraft.io/claude-code)
+
+[![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/claude-code)
+
 This repository provides a **Snap package** for the [Anthropics Claude Code](https://github.com/anthropics/claude-code).
 
 ### Disclaimer

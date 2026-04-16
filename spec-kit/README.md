@@ -1,5 +1,10 @@
 # GitHub GitHub Spec Kit (Unofficial Snap)
 
+[![spec-kit](https://snapcraft.io/spec-kit/badge.svg)](https://snapcraft.io/spec-kit)
+[![spec-kit](https://snapcraft.io/spec-kit/trending.svg?name=0)](https://snapcraft.io/spec-kit)
+
+[![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/spec-kit)
+
 This repository provides a **Snap package** for the [GitHub GitHub Spec Kit](https://github.com/github/spec-kit).
 
 ### Disclaimer
@@ -12,7 +17,7 @@ This repository provides a **Snap package** for the [GitHub GitHub Spec Kit](htt
 To ensure security and integrity, this snap follows a "vanilla" build process:
 
  - It pulls the latest stable source directly from https://github.com/github/spec-kit
- - It packages the Python environment and dependencies into a confined snap.
+ - It packages the Node environment and dependencies into a confined snap.
  - No custom patches or external scripts are added to the spec-kit source code.
 
 

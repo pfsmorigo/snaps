@@ -1,5 +1,10 @@
 # GitHub Copilot CLI (Unofficial Snap)
 
+[![copilot-cli](https://snapcraft.io/copilot-cli/badge.svg)](https://snapcraft.io/copilot-cli)
+[![copilot-cli](https://snapcraft.io/copilot-cli/trending.svg?name=0)](https://snapcraft.io/copilot-cli)
+
+[![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/copilot-cli)
+
 This repository provides a **Snap package** for the [GitHub Copilot CLI](https://github.com/github/copilot-cli).
 
 ### Disclaimer

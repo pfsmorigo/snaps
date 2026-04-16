@@ -1,5 +1,10 @@
 # ${COMPANY} ${TITLE} (Unofficial Snap)
 
+[![${PROJECT}](https://snapcraft.io/${PROJECT}/badge.svg)](https://snapcraft.io/${PROJECT})
+[![${PROJECT}](https://snapcraft.io/${PROJECT}/trending.svg?name=0)](https://snapcraft.io/${PROJECT})
+
+[![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/${PROJECT})
+
 This repository provides a **Snap package** for the [${COMPANY} ${TITLE}](https://github.com/${DOMAIN}/${PROJECT}).
 
 ### Disclaimer

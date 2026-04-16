@@ -1,5 +1,10 @@
 # Google Gemini CLI (Unofficial Snap)
 
+[![gemini-cli](https://snapcraft.io/gemini-cli/badge.svg)](https://snapcraft.io/gemini-cli)
+[![gemini-cli](https://snapcraft.io/gemini-cli/trending.svg?name=0)](https://snapcraft.io/gemini-cli)
+
+[![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/gemini-cli)
+
 This repository provides a **Snap package** for the [Google Gemini CLI](https://github.com/google-gemini/gemini-cli).
 
 ### Disclaimer
