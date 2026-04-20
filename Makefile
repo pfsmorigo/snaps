@@ -1,6 +1,6 @@
 SUBDIRS := $(shell find . -name ".env" -exec dirname {} \; | sed 's|^\./||')
 
-.PHONY: all $(SUBDIRS) pull-upstream build release install clean
+.PHONY: all $(SUBDIRS) pull-upstream build release install clean list-snaps
 
 all: build
 
@@ -9,6 +9,9 @@ $(SUBDIRS):
 	@$(MAKE) -C $@ $(MAKECMDGOALS)
 
 pull-upstream build release install clean: $(SUBDIRS)
+
+list-snaps:
+	@find . -name "*.snap" -exec du -h {} + | sort -k2
 
 # Default goal if none specified
 .DEFAULT_GOAL := build

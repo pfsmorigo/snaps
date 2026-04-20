@@ -5,7 +5,7 @@ TARGET_DIR := v${VERSION}
 TARGET := ${TARGET_DIR}/${PROJECT}_${VERSION}_amd64.snap
 
 export VERSION := ${VERSION}
-export COMMON_LIBRARIES := git quilt poppler-utils curl wget devscripts
+export COMMON_LIBRARIES := git quilt poppler-utils curl wget devscripts python3-apt
 
 define print_message
 	@echo "\n\033[34m$(1)\033[0m"
@@ -13,6 +13,7 @@ endef
 
 default: build
 	@echo "Lastest release is ${VERSION}"
+	@echo "Snap size is $$(du -h ${TARGET} | cut -f1)"
 
 release: ${TARGET_DIR}/released
 
