@@ -20,6 +20,12 @@ confinement: strict
 apps:
   copilot:
     command: lib/node_modules/copilot-wrapper/node_modules/.bin/copilot
+    environment:
+      PATH: $SNAP_USER_COMMON/local/bin:$PATH
+      PYTHONPATH: $SNAP_USER_COMMON/local/lib/python3.12/site-packages:$SNAP_USER_COMMON/local/lib/python3.12/dist-packages:$SNAP/usr/lib/python3/dist-packages
+      PIP_PREFIX: $SNAP_USER_COMMON
+      PIP_BREAK_SYSTEM_PACKAGES: "1"
+      QUILT_DIR: $SNAP/usr/share/quilt
     plugs:
       - network
       - network-bind

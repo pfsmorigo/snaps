@@ -5,7 +5,7 @@ TARGET_DIR := v${VERSION}
 TARGET := ${TARGET_DIR}/${PROJECT}_${VERSION}_amd64.snap
 
 export VERSION := ${VERSION}
-export COMMON_LIBRARIES := git quilt poppler-utils curl wget devscripts python3-apt
+export COMMON_LIBRARIES := git quilt poppler-utils curl wget devscripts python3-apt python3-pip
 
 define print_message
 	@echo "\n\033[34m$(1)\033[0m"
