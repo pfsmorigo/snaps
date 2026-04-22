@@ -17,6 +17,8 @@ default: build
 
 release: ${TARGET_DIR}/released
 
+release-beta: ${TARGET_DIR}/released-beta
+
 README.md: ../README.md.mk
 	$(call print_message,Refreshing $@...)
 	@set -a; . ./.env; set +a; envsubst < $< > $@
@@ -24,6 +26,11 @@ README.md: ../README.md.mk
 ${TARGET_DIR}/released: ${TARGET}
 	$(call print_message,Uploading $<...)
 	snapcraft upload --release=stable $<
+	touch $@
+
+${TARGET_DIR}/released-beta: ${TARGET}
+	$(call print_message,Uploading $<...)
+	snapcraft upload --release=beta $<
 	touch $@
 
 ${TARGET_DIR}/snapcraft.yaml: snapcraft.yaml.mk
