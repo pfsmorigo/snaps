@@ -66,6 +66,7 @@ parts:
       - -usr/lib/x86_64-linux-gnu/libnssdbm3.so
       - -usr/lib/x86_64-linux-gnu/libsoftokn3.so
       - -usr/lib/x86_64-linux-gnu/libssl3.so
+      - -usr/lib/x86_64-linux-gnu/libasound.so*
 
     override-pull: |
       craftctl default
@@ -79,4 +80,4 @@ parts:
       }
       EOF
 
-# vim: syntax=yaml
+# vim: syntax=yaml expandtab

@@ -80,4 +80,4 @@ parts:
       }
       EOF
 
-# vim: syntax=yaml
+# vim: syntax=yaml expandtab

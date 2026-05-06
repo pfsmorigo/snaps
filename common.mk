@@ -1,17 +1,19 @@
 include .env
 
-VERSION := $(shell curl -s https://api.github.com/repos/${DOMAIN}/${PROJECT}/tags | jq -r ".[].name" | grep -e "-dev" -v -e "-rc" -e "-alpha" -e "-beta" -e "-pre" -e "-nightly" | head -n 1 | sed 's/^v//')
+VERSION := $(shell curl -s https://api.github.com/repos/${DOMAIN}/${PROJECT}/releases/latest | jq -r .tag_name | sed 's/^v//')
 TARGET_DIR := v${VERSION}
 TARGET := ${TARGET_DIR}/${PROJECT}_${VERSION}_amd64.snap
 
 export VERSION := ${VERSION}
-export COMMON_LIBRARIES := git quilt poppler-utils curl wget devscripts python3-apt python3-pip
+export COMMON_LIBRARIES := git quilt poppler-utils curl wget devscripts python3-apt python3-pip coreutils
 
 define print_message
 	@echo "\n\033[34m$(1)\033[0m"
 endef
 
-default: build
+default: info build
+
+info:
 	@echo "Lastest release is ${VERSION}"
 	@echo "Snap size is $$(du -h ${TARGET} | cut -f1)"
 

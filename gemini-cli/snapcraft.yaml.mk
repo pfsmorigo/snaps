@@ -51,6 +51,12 @@ parts:
       - libsecret-1-0
 
     prime:
+      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linux-arm/*
+      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linux-arm64/*
+      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linux-armv7l/*
+      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linux-ia32/*
+      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linuxmusl-arm/*
+      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linuxmusl-arm64/*
       - -lib/node_modules/gemini-wrapper/node_modules/tree-sitter-bash/prebuilds/linux-arm64/*
       - -usr/lib/x86_64-linux-gnu/libicuio.so*
       - -usr/lib/x86_64-linux-gnu/libicutest.so*
@@ -76,4 +82,4 @@ parts:
       }
       EOF
 
-# vim: syntax=yaml
+# vim: syntax=yaml expandtab
