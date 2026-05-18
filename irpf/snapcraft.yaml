@@ -1,0 +1,43 @@
+name: irpf
+version: '2026'
+summary: Imposto de Renda Pessoa Física 2026
+description: |
+  Brazilian Income Tax declaration software.
+  This snap maps ~/ProgramasRFB to the persistent common directory
+  ensuring compatibility and data persistence across refreshes.
+confinement: strict
+base: core24
+
+environment:
+  _JAVA_OPTIONS: -Duser.home="$SNAP_USER_DATA"
+  JAVA_HOME: $SNAP/usr/lib/jvm/java-17-openjdk-amd64
+  PATH: $JAVA_HOME/bin:$PATH
+
+apps:
+  irpf:
+    command: bin/irpf
+    extensions:
+      - gnome
+    plugs:
+      - home
+      - network
+      - x11
+      - desktop
+      - desktop-legacy
+      - wayland
+
+parts:
+  launcher:
+    plugin: dump
+    source: .
+    organize:
+      'irpf.sh': bin/irpf
+
+    stage-packages:
+      - openjdk-17-jre
+      - libxrender1
+      - libxtst6
+      - libxi6
+      - libfontconfig1
+      - curl
+      - unzip
