@@ -9,6 +9,18 @@ pack: ${TARGET}
 ${TARGET}: snapcraft.yaml
 	snapcraft pack
 
+release: released_${VERSION}
+
+release-beta: released-beta_${VERSION}
+
+released_${VERSION}: ${TARGET}
+	snapcraft upload --release=stable $<
+	touch $@
+
+released-beta_${VERSION}: ${TARGET}
+	snapcraft upload --release=beta $<
+	touch $@
+
 install: ${TARGET}
 	sudo snap install --dangerous $<
 

@@ -2,8 +2,7 @@ name: antigravity-cli
 base: core24
 version: '1.0.0'
 title: Antigravity CLI
-summary: |
-  Antigravity CLI is a tool for managing your Antigravity projects.
+summary: Antigravity CLI is a tool for managing your Antigravity projects.
 description: |
   Antigravity CLI understands your codebase, makes edits with your permission,
   and executes commands — right from your terminal.

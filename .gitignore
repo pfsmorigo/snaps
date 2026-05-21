@@ -1,4 +1,6 @@
 *.snap
+antigravity-cli/released_*
+antigravity-cli/released-beta_*
 copilot-cli/snapcraft.yaml
 gemini-cli/snapcraft.yaml
 squashfs-root
