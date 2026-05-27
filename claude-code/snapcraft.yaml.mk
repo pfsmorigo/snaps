@@ -9,19 +9,17 @@ description: |
   tasks, explaining complex code, and handling git workflows - all through
   natural language commands.
 license: Apache-2.0
-
 website: https://code.claude.com/docs/en/overview
 source-code: https://github.com/anthropics/claude-code
 issues: https://github.com/anthropics/claude-code/issues
 contact: https://github.com/anthropics/claude-code/discussions
 donation: https://github.com/anthropics/claude-code
-
 grade: stable
 confinement: strict
 
 apps:
   claude-code:
-    command: lib/node_modules/claude-code-wrapper/node_modules/.bin/claude
+    command: bin/claude-code
     environment:
       PATH: $SNAP_USER_COMMON/local/bin:$PATH
       PYTHONPATH: $SNAP_USER_COMMON/local/lib/python3.12/site-packages:$SNAP_USER_COMMON/local/lib/python3.12/dist-packages:$SNAP/usr/lib/python3/dist-packages
@@ -34,50 +32,16 @@ apps:
       - home
       - desktop
       - desktop-legacy
+      - password-manager-service
 
 parts:
   claude-code:
-    plugin: npm
-    source: .
-    npm-include-node: true
-    npm-node-version: 20.14.0
-
-    # We need python/make/g++ because some npm dependencies build native modules
+    plugin: nil
     build-packages:
-      - build-essential
-      - pkg-config
-      - python3
-    stage-packages:
-      - libasound2
-
-    prime:
-      - -lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code/vendor/audio-capture/arm64-linux/*
-      - -lib/node_modules/claude-code-wrapper/node_modules/@anthropic-ai/claude-code/vendor/tree-sitter-bash/arm64-linux/*
-      - -lib/node_modules/claude-code-wrapper/node_modules/@img/sharp-linux-x64/*
-      - -lib/node_modules/claude-code-wrapper/node_modules/@img/sharp-libvips-linux-x64/*
-      - -usr/lib/x86_64-linux-gnu/libicui18n.so*
-      - -usr/lib/x86_64-linux-gnu/libicuio.so*
-      - -usr/lib/x86_64-linux-gnu/libicutest.so*
-      - -usr/lib/x86_64-linux-gnu/libicutu.so*
-      - -usr/lib/x86_64-linux-gnu/preloadable_libintl.so
-      - -usr/lib/x86_64-linux-gnu/libfreebl3.so
-      - -usr/lib/x86_64-linux-gnu/libfreeblpriv3.so
-      - -usr/lib/x86_64-linux-gnu/libnssckbi.so
-      - -usr/lib/x86_64-linux-gnu/libnssdbm3.so
-      - -usr/lib/x86_64-linux-gnu/libsoftokn3.so
-      - -usr/lib/x86_64-linux-gnu/libssl3.so
-      - -usr/lib/x86_64-linux-gnu/libasound.so*
-
-    override-pull: |
-      craftctl default
-      cat > package.json <<EOF
-      {
-        "name": "claude-code-wrapper",
-        "version": "${VERSION}",
-        "dependencies": {
-          "@anthropic-ai/claude-code": "latest"
-        }
-      }
-      EOF
+      - curl
+      - ca-certificates
+    override-build: |
+      mkdir -p $SNAPCRAFT_PART_INSTALL/bin
+      curl -fsSL https://claude.ai/install.sh | bash
 
 # vim: syntax=yaml expandtab
