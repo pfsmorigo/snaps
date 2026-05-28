@@ -40,6 +40,8 @@ parts:
     build-packages:
       - curl
       - ca-certificates
+    stage-packages:
+      - libasound2
     override-build: |
       mkdir -p $SNAPCRAFT_PART_INSTALL/bin
       curl -fsSL https://claude.ai/install.sh | bash
