@@ -25,6 +25,10 @@ README.md: ../README.md.mk
 	$(call print_message,Refreshing $@...)
 	@set -a; . ./.env; set +a; envsubst < $< > $@
 
+description.md: ../description.md.mk
+	$(call print_message,Refreshing $@...)
+	@set -a; . ./.env; set +a; envsubst < $< > $@
+
 ${TARGET_DIR}/released: ${TARGET}
 	$(call print_message,Uploading $<...)
 	snapcraft upload --release=stable $<
