@@ -1,6 +1,6 @@
 name: antigravity-cli
 base: core24
-version: '1.0.2'
+version: "${VERSION}"
 title: Antigravity CLI
 summary: Antigravity CLI is a tool for managing your Antigravity projects.
 description: |
@@ -62,3 +62,5 @@ parts:
     override-build: |
       mkdir -p $SNAPCRAFT_PART_INSTALL/bin
       curl -fsSL https://antigravity.google/cli/install.sh | bash -s -- --dir $SNAPCRAFT_PART_INSTALL/bin
+
+# vim: syntax=yaml expandtab
