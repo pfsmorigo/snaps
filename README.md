@@ -53,6 +53,8 @@ your terminal.
 An open-source AI agent that brings the power of Gemini directly into
 your terminal.
 
+![Gemini CLI Screenshot](gemini-cli/images/screenshot.png)
+
 [![gemini-cli](https://snapcraft.io/gemini-cli/badge.svg)](https://snapcraft.io/gemini-cli)
 [![gemini-cli](https://snapcraft.io/gemini-cli/trending.svg?name=0)](https://snapcraft.io/gemini-cli)
 
