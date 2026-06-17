@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 import yaml
 from pathlib import Path
@@ -14,21 +12,21 @@ def extract_info(file_path):
 
             name = data.get('name')
             path = file_path.parent
-            logo_path = None
 
-            # Look for a logo in the images directory
+            # Look for a screenshot in the images directory
             images_dir = path / 'images'
+            screenshot_path = None
             if images_dir.exists():
-                logos = list(images_dir.glob('*_logo.png'))
-                if logos:
-                    logo_path = logos[0].relative_to(Path('.'))
+                screenshots = list(images_dir.glob('screenshot.png'))
+                if screenshots:
+                    screenshot_path = screenshots[0].relative_to(Path('.'))
 
             return {
                 'name': name,
                 'title': data.get('title', name),
                 'description': data.get('description', 'No description provided.').strip(),
                 'path': path,
-                'logo': logo_path
+                'screenshot': screenshot_path
             }
         except yaml.YAMLError as exc:
             print(f"Error parsing {file_path}: {exc}")
@@ -60,15 +58,17 @@ def main():
 
         readme_content += f"### [{title}]({rel_path})\n\n"
 
-        if snap['logo']:
-            readme_content += f"![{title} Logo]({snap['logo']})\n\n"
+        # Description immediately after title
+        readme_content += f"{snap['description']}\n\n"
+
+        # Screenshot
+        if snap['screenshot']:
+            readme_content += f"![{title} Screenshot]({snap['screenshot']})\n\n"
 
         # Add Snap Store badges (Status, Trending, and Install Button)
         readme_content += f"[![{name}](https://snapcraft.io/{name}/badge.svg)](https://snapcraft.io/{name})\n"
         readme_content += f"[![{name}](https://snapcraft.io/{name}/trending.svg?name=0)](https://snapcraft.io/{name})\n\n"
         readme_content += f"[![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/{name})\n\n"
-
-        readme_content += f"{snap['description']}\n\n"
 
         readme_content += "---\n\n"
 
