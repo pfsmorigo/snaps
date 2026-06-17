@@ -32,6 +32,13 @@ apps:
       - desktop-legacy
       - password-manager-service
 
+slots:
+  bin:
+    interface: content
+    content: copilot-cli
+    read:
+      - bin
+
 parts:
   copilot:
     plugin: nil

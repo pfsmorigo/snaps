@@ -19,7 +19,7 @@ confinement: strict
 
 apps:
   gemini:
-    command: lib/node_modules/gemini-wrapper/node_modules/.bin/gemini
+    command: lib/node_modules/gemini-cli/node_modules/.bin/gemini
     environment:
       PATH: $SNAP_USER_COMMON/local/bin:$PATH
       PYTHONPATH: $SNAP_USER_COMMON/local/lib/python3.12/site-packages:$SNAP_USER_COMMON/local/lib/python3.12/dist-packages:$SNAP/usr/lib/python3/dist-packages
@@ -32,6 +32,13 @@ apps:
       - home
       - desktop
       - desktop-legacy
+
+slots:
+  bin:
+    interface: content
+    content: gemini-cli
+    read:
+      - lib/node_modules/gemini-cli
 
 parts:
   gemini:
@@ -51,13 +58,13 @@ parts:
       - libsecret-1-0
 
     prime:
-      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linux-arm/*
-      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linux-arm64/*
-      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linux-armv7l/*
-      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linux-ia32/*
-      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linuxmusl-arm/*
-      - -lib/node_modules/gemini-wrapper/node_modules/@github/keytar/prebuilds/linuxmusl-arm64/*
-      - -lib/node_modules/gemini-wrapper/node_modules/tree-sitter-bash/prebuilds/linux-arm64/*
+      - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linux-arm/*
+      - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linux-arm64/*
+      - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linux-armv7l/*
+      - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linux-ia32/*
+      - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linuxmusl-arm/*
+      - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linuxmusl-arm64/*
+      - -lib/node_modules/gemini-cli/node_modules/tree-sitter-bash/prebuilds/linux-arm64/*
       - -usr/lib/x86_64-linux-gnu/libicuio.so*
       - -usr/lib/x86_64-linux-gnu/libicutest.so*
       - -usr/lib/x86_64-linux-gnu/preloadable_libintl.so
@@ -74,7 +81,7 @@ parts:
       craftctl default
       cat > package.json <<EOF
       {
-        "name": "gemini-wrapper",
+        "name": "gemini-cli",
         "version": "${VERSION}",
         "dependencies": {
           "@google/gemini-cli": "latest"

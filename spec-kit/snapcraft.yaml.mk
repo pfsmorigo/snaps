@@ -20,10 +20,26 @@ confinement: strict
 apps:
   specify:
     command: bin/specify
+    environment:
+      PATH: $SNAP/lib/node_modules/gemini-cli/node_modules/.bin:$SNAP/bin/copilot:$PATH
     plugs:
       - home
       - network
       - network-bind
+      - gemini-cli
+      - copilot-cli
+
+plugs:
+  gemini-cli:
+    interface: content
+    content: gemini-cli
+    default-provider: gemini-cli
+    target: $SNAP/lib/node_modules/gemini-cli
+  copilot-cli:
+    interface: content
+    content: copilot-cli
+    default-provider: copilot-cli
+    target: $SNAP/bin/copilot
 
 parts:
   specify-cli:
