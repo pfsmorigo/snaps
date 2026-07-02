@@ -63,6 +63,7 @@ parts:
       - -usr/lib/x86_64-linux-gnu/libicutu.so*
       - -usr/lib/x86_64-linux-gnu/libnssckbi.so
       - -usr/lib/x86_64-linux-gnu/libnssdbm3.so
+      - -usr/lib/x86_64-linux-gnu/liboss4-salsa.so*
       - -usr/lib/x86_64-linux-gnu/libsoftokn3.so
       - -usr/lib/x86_64-linux-gnu/libssl3.so
       - -usr/lib/x86_64-linux-gnu/libunwind-coredump.so*

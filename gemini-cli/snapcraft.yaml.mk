@@ -71,7 +71,6 @@ parts:
       - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linuxmusl-arm/*
       - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linuxmusl-arm64/*
       - -lib/node_modules/gemini-cli/node_modules/tree-sitter-bash/prebuilds/linux-arm64/*
-      - -usr/lib/x86_64-linux-gnu/libcurl.so*
       - -usr/lib/x86_64-linux-gnu/libfreebl3.so
       - -usr/lib/x86_64-linux-gnu/libfreeblpriv3.so
       - -usr/lib/x86_64-linux-gnu/libgstcheck-1.0.so*

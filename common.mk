@@ -26,7 +26,6 @@ default: info build
 
 info:
 	@echo "Lastest release is ${VERSION}"
-	@echo "Snap size is $$(du -h ${TARGET} | cut -f1)"
 
 release: ${TARGET_DIR}/released
 
@@ -63,6 +62,7 @@ ${TARGET_DIR}/snapcraft.yaml: snapcraft.yaml.mk
 	fi
 
 build: ${TARGET}
+	@echo "Snap size is $$(du -h ${TARGET} | cut -f1)"
 
 ${TARGET}: ${TARGET_DIR}/snapcraft.yaml
 	$(call print_message,Build $@...)

@@ -55,7 +55,6 @@ parts:
       - python3-pip
       - coreutils
     prime:
-      - -usr/lib/x86_64-linux-gnu/libcurl.so*
       - -usr/lib/x86_64-linux-gnu/libfreebl3.so
       - -usr/lib/x86_64-linux-gnu/libfreeblpriv3.so
       - -usr/lib/x86_64-linux-gnu/libgstcheck-1.0.so*
