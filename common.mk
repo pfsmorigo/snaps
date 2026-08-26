@@ -10,6 +10,8 @@ export COMMON_LIBRARIES := \
 	curl \
 	devscripts \
 	git \
+	golang-go \
+	golang-golang-x-tools \
 	libcurl4-openssl-dev \
 	packagekit-tools \
 	poppler-utils \
