@@ -40,10 +40,10 @@ The files will then be available to the CLI at the path `~/snap/claude-code/comm
 
 ### 2. Home Directory Access (Broad Permissions)
 
-If you prefer to allow the snap to access your entire home directory (excluding hidden files), run:
+By default, your entire home directory (excluding hidden files) is accessible to the snap, if you prefer not, run:
 
 ```bash
-sudo snap connect claude-code:home
+sudo snap disconnect claude-code:home
 ```
 
 
