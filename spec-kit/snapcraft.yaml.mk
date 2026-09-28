@@ -1,5 +1,5 @@
 name: spec-kit
-base: core24
+base: core26
 version: "${VERSION}"
 title: GitHub Spec Kit
 summary: GitHub Spec Kit - Build high-quality software faster

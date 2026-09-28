@@ -1,5 +1,5 @@
 name: copilot-cli
-base: core24
+base: core26
 version: "${VERSION}"
 title: Copilot CLI
 summary: GitHub Copilot CLI

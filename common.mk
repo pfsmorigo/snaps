@@ -13,7 +13,7 @@ export COMMON_LIBRARIES := \
 	golang-go \
 	golang-golang-x-tools \
 	libcurl4-openssl-dev \
-	packagekit-tools \
+	packagekit \
 	poppler-utils \
 	python3-apt \
 	python3-pip \

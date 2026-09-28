@@ -1,5 +1,5 @@
 name: gemini-cli
-base: core24
+base: core26
 version: "${VERSION}"
 title: Gemini CLI
 summary: Google Gemini CLI

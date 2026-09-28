@@ -1,5 +1,5 @@
 name: antigravity-cli
-base: core24
+base: core26
 version: "${VERSION}"
 title: Antigravity CLI
 summary: Antigravity CLI is a tool for managing your Antigravity projects.
@@ -45,15 +45,15 @@ parts:
       - curl
       - ca-certificates
     stage-packages:
-      - git
-      - quilt
-      - poppler-utils
+      - coreutils
       - curl
-      - wget
       - devscripts
+      - git
+      - poppler-utils
       - python3-apt
       - python3-pip
-      - coreutils
+      - quilt
+      - wget
     prime:
       - -usr/lib/x86_64-linux-gnu/libfreebl3.so
       - -usr/lib/x86_64-linux-gnu/libfreeblpriv3.so

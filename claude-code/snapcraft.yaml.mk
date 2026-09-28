@@ -1,5 +1,5 @@
 name: claude-code
-base: core24
+base: core26
 version: "${VERSION}"
 title: Claude Code
 summary: Anthropic Claude Code
