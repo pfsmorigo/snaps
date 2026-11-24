@@ -18,6 +18,7 @@ export COMMON_LIBRARIES := \
 	python3-apt \
 	python3-pip \
 	quilt \
+	ssh-client \
 	wget
 
 define print_message
@@ -68,11 +69,11 @@ build: ${TARGET}
 
 ${TARGET}: ${TARGET_DIR}/snapcraft.yaml
 	$(call print_message,Build $@...)
-	cd ${TARGET_DIR} && snapcraft pack
+	cd ${TARGET_DIR} && snapcraft pack 2>&1 | tee snapcraft_pack_output
 
 install: ${TARGET}
 	sudo snap install --dangerous $<
 
 clean:
-	snapcraft clean
+	#snapcraft clean
 	$(RM) -rf v[0-9]*

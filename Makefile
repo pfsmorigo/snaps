@@ -13,5 +13,9 @@ pull-upstream build release release-beta install clean: $(SUBDIRS)
 list-snaps:
 	@find . -name "*.snap" -exec du -h {} + | sort -k2
 
+commit:
+	git commit -vsS -F commit_message.txt
+	rm commit_message.txt
+
 # Default goal if none specified
 .DEFAULT_GOAL := build

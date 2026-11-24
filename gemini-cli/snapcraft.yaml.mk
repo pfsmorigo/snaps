@@ -70,9 +70,15 @@ parts:
       - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linux-ia32/*
       - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linuxmusl-arm/*
       - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linuxmusl-arm64/*
+      - -lib/node_modules/gemini-cli/node_modules/@github/keytar/prebuilds/linuxmusl-x64/*
       - -lib/node_modules/gemini-cli/node_modules/tree-sitter-bash/prebuilds/linux-arm64/*
+      - -usr/lib/x86_64-linux-gnu/libevent-2.1.so*
       - -usr/lib/x86_64-linux-gnu/libfreebl3.so
       - -usr/lib/x86_64-linux-gnu/libfreeblpriv3.so
+      - -usr/lib/x86_64-linux-gnu/libgmpxx.so*
+      - -usr/lib/x86_64-linux-gnu/libgnutls-dane.so*
+      - -usr/lib/x86_64-linux-gnu/libgnutls-openssl.so*
+      - -usr/lib/x86_64-linux-gnu/libgssrpc.so*
       - -usr/lib/x86_64-linux-gnu/libgstcheck-1.0.so*
       - -usr/lib/x86_64-linux-gnu/libgstcontroller-1.0.so*
       - -usr/lib/x86_64-linux-gnu/libgstnet-1.0.so*
@@ -80,14 +86,19 @@ parts:
       - -usr/lib/x86_64-linux-gnu/libicuio.so*
       - -usr/lib/x86_64-linux-gnu/libicutest.so*
       - -usr/lib/x86_64-linux-gnu/libicutu.so*
+      - -usr/lib/x86_64-linux-gnu/libkadm5clnt_mit.so*
+      - -usr/lib/x86_64-linux-gnu/libkadm5srv_mit.so*
+      - -usr/lib/x86_64-linux-gnu/libkdb5.so*
       - -usr/lib/x86_64-linux-gnu/libnssckbi.so
       - -usr/lib/x86_64-linux-gnu/libnssdbm3.so
       - -usr/lib/x86_64-linux-gnu/libsoftokn3.so
       - -usr/lib/x86_64-linux-gnu/libssl3.so
+      - -usr/lib/x86_64-linux-gnu/libunbound.so*
       - -usr/lib/x86_64-linux-gnu/libunwind-coredump.so*
       - -usr/lib/x86_64-linux-gnu/libunwind-ptrace.so*
       - -usr/lib/x86_64-linux-gnu/libunwind-x86_64.so*
       - -usr/lib/x86_64-linux-gnu/preloadable_libintl.so
+      - -usr/share/go-*/src/debug/elf/testdata
     override-pull: |
       craftctl default
       cat > package.json <<EOF
