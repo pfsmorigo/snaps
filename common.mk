@@ -58,7 +58,7 @@ ${TARGET_DIR}/snapcraft.yaml: snapcraft.yaml.mk
 	@envsubst '$$VERSION' < $< > $@
 	@if grep -q "stage-packages:" $@; then \
 		for lib in $(COMMON_LIBRARIES); do \
-			if ! grep -q -- "- $$lib" $@; then \
+			if ! sed -n '/stage-packages:/,/^[ ]\{0,4\}[a-z]/p' $@ | grep -q -E "^[[:space:]]*- $${lib}[[:space:]]*\$$"; then \
 				sed -i "/stage-packages:/a \      - $$lib" $@; \
 			fi; \
 		done; \

@@ -51,7 +51,6 @@ parts:
       - libasound2
     prime:
       - -usr/lib/x86_64-linux-gnu/libasound.so*
-      - -usr/lib/x86_64-linux-gnu/libcurl.so*
       - -usr/lib/x86_64-linux-gnu/libevent-2.1.so*
       - -usr/lib/x86_64-linux-gnu/libfreebl3.so
       - -usr/lib/x86_64-linux-gnu/libfreeblpriv3.so

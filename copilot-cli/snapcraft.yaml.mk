@@ -58,9 +58,9 @@ parts:
       - libx11-6
       - libxtst6
       - libei1
+      - gh
     prime:
       - -usr/lib/x86_64-linux-gnu/libXtst.so*
-      - -usr/lib/x86_64-linux-gnu/libcurl.so*
       - -usr/lib/x86_64-linux-gnu/libei.so*
       - -usr/lib/x86_64-linux-gnu/libevent-2.1.so*
       - -usr/lib/x86_64-linux-gnu/libfftw3f_omp.so*
